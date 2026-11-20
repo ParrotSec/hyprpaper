@@ -1,0 +1,40 @@
+Source: hyprpaper
+Section: x11
+Maintainer: Parrot Dev Team <team@parrotsec.org>
+Uploaders: Lorenzo "Palinuro" Faletra <palinuro@parrotsec.org>
+Build-Depends:
+ debhelper-compat (= 13),
+ cmake,
+ hyprwayland-scanner (>= 0.4.2),
+ hyprwire-scanner,
+ libdrm-dev,
+ libgles-dev,
+ libhyprlang-dev (>= 0.6.0),
+ libhyprtoolkit-dev (>= 0.4.1),
+ libhyprutils-dev (>= 0.2.4),
+ libhyprwire-dev,
+ libjpeg-dev,
+ libmagic-dev,
+ libopengl-dev,
+ libpixman-1-dev,
+ libwayland-dev,
+ libwebp-dev,
+ pkgconf,
+ wayland-protocols (>= 1.35),
+Standards-Version: 4.7.2
+Rules-Requires-Root: no
+Homepage: https://github.com/hyprwm/hyprpaper
+Vcs-Git: https://gitlab.com/parrotsec/packages/hyprpaper.git
+Vcs-Browser: https://gitlab.com/parrotsec/packages/hyprpaper
+
+Package: hyprpaper
+Priority: optional
+Architecture: any
+Multi-Arch: foreign
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends},
+Description: Wallpaper utility for Hyprland
+ Hyprpaper is a blazing fast wallpaper utility for Hyprland
+ (and other wlroots-based compositors) with the ability to
+ dynamically change wallpapers through sockets.

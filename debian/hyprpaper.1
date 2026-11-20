@@ -1,0 +1,179 @@
+.TH HYPRPAPER 1 "2026-05-02" "hyprpaper v0.8.4" "User Commands"
+.SH NAME
+hyprpaper \- fast, IPC-controlled wallpaper utility for Hyprland
+.SH SYNOPSIS
+.B hyprpaper
+[\fB\-c\fR \fIpath\fR]
+[\fB\-\-verbose\fR]
+[\fB\-v\fR]
+[\fB\-h\fR]
+.SH DESCRIPTION
+.B hyprpaper
+is a fast, IPC-controlled wallpaper utility for Hyprland. It reads a
+configuration file to set per-monitor wallpapers and supports runtime
+control via
+.BR hyprctl (1).
+.SH OPTIONS
+.TP
+.BR \-c ", " \-\-config " " \fIpath\fR
+Set a custom config file path. Defaults to
+.IR ~/.config/hypr/hyprpaper.conf .
+.TP
+.B \-\-verbose
+Enable more verbose logging output.
+.TP
+.BR \-v ", " \-\-version
+Print hyprpaper's version and exit.
+.TP
+.BR \-h ", " \-\-help
+Show the help menu and exit.
+.SH CONFIGURATION
+The configuration file is located at
+.IR ~/.config/hypr/hyprpaper.conf .
+It is not required; hyprpaper can be controlled entirely via IPC.
+.SS Wallpaper blocks
+Wallpapers are declared in
+.B wallpaper
+blocks. Multiple blocks may be specified. A block with an empty
+.B monitor
+field acts as a fallback for monitors that have not been assigned a specific
+wallpaper.
+.PP
+.RS 4
+.nf
+wallpaper {
+    monitor   = DP-3
+    path      = ~/myFile.jxl
+    fit_mode  = cover
+}
+
+wallpaper {
+    monitor   =
+    path      = ~/fallback.jxl
+    fit_mode  = cover
+}
+.fi
+.RE
+.PP
+The following options are recognized inside a
+.B wallpaper { }
+block:
+.TP
+.B monitor
+Monitor ID to target. Leave empty to use this wallpaper as a fallback for
+any monitor without a specific assignment.
+.TP
+.B path
+Path to an image file, or a directory containing image files.
+Required.
+.TP
+.B fit_mode
+How to display the image. One of
+.BR contain ,
+.BR cover ,
+.BR tile ,
+or
+.BR fill .
+Defaults to
+.BR cover .
+.TP
+.B timeout
+Seconds between wallpaper changes when
+.B path
+is a directory. Defaults to
+.BR 30 .
+.TP
+.B order
+Order in which images are shown when
+.B path
+is a directory. Currently the only supported value is
+.BR random .
+.TP
+.B recursive
+Whether to scan subdirectories recursively when
+.B path
+is a directory. Defaults to
+.BR false .
+.SS Global options
+These options are set outside any
+.B wallpaper { }
+block.
+.TP
+.B splash
+Render the Hyprland splash over the wallpaper. Boolean, defaults to
+.BR true .
+.TP
+.B splash_offset
+How far up the splash is displayed. Float, defaults to
+.BR 20 .
+.TP
+.B splash_opacity
+Opacity of the splash (0.0\[en]1.0). Float, defaults to
+.BR 0.8 .
+.TP
+.B ipc
+Enable IPC support. Boolean, defaults to
+.BR true .
+.SS Sourcing
+Additional files can be included with the
+.B source
+keyword. Globbing, tilde expansion, and relative paths are supported.
+Processing is linear: lines before
+.B source
+are parsed first.
+.PP
+.RS 4
+.nf
+source = ~/.config/hypr/hyprpaper.d/*.conf
+.fi
+.RE
+.SH IPC
+.B hyprpaper
+supports IPC via
+.BR hyprctl (1).
+To set a wallpaper at runtime:
+.PP
+.RS 4
+.nf
+hyprctl hyprpaper wallpaper '\fImon\fR, \fIpath\fR[, \fIfit_mode\fR]'
+.fi
+.RE
+.PP
+.I mon
+may be left empty for the fallback target.
+.I fit_mode
+is optional.
+The fallback wallpaper only applies to monitors that have never had a
+specific monitor target assigned.
+.SH AUTOSTART
+To launch hyprpaper automatically with Hyprland, add the following line to
+.IR ~/.config/hypr/hyprland.conf :
+.PP
+.RS 4
+.nf
+exec-once = hyprpaper
+.fi
+.RE
+.PP
+If Hyprland is started with
+.BR uwsm ,
+you may alternatively enable the provided systemd user service:
+.PP
+.RS 4
+.nf
+systemctl --user enable --now hyprpaper.service
+.fi
+.RE
+.SH FILES
+.TP
+.I ~/.config/hypr/hyprpaper.conf
+Default configuration file.
+.SH SEE ALSO
+.BR hyprland (1),
+.BR hyprctl (1),
+.BR hyprpicker (1)
+.SH AUTHORS
+The Hypr Development team and contributors.
+.br
+.UR https://github.com/hyprwm/hyprpaper
+.UE

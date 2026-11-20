@@ -1,0 +1,106 @@
+hyprpaper (0.8.5-1parrot1) echo; urgency=medium
+
+  * New upstream release, built against hyprtoolkit 0.6.0
+    (libhyprtoolkit6).
+
+ -- Lorenzo "Palinuro" Faletra <palinuro@parrotsec.org>  Fri, 20 Nov 2026 01:12:14 +0100
+
+hyprpaper (0.8.5-1) unstable; urgency=medium
+
+  * New upstream version 0.8.5
+  * d/rules: cleanup .cpp/.hpp in dir hw-protocols
+  * d/rules: remove unused envs and override_dh_auto_configure
+
+ -- Carl Keinath <carl.keinath@gmail.com>  Tue, 03 Nov 2026 16:33:51 +0800
+
+hyprpaper (0.8.4-1) unstable; urgency=medium
+
+  * New upstream version 0.8.4
+  * d/control: bump S-V to 4.7.4, remove RRR and Priority: optional
+  * append Uploaders
+  * add gbp config
+  * add CI/CD config
+  * d/watch: migrate to version 5
+  * d/copyright: update upstream contact
+  * migrate manpage to groff format
+
+ -- Carl Keinath <carl.keinath@gmail.com>  Wed, 06 May 2026 13:46:24 +0800
+
+hyprpaper (0.8.3-1) unstable; urgency=medium
+
+  * [9ddde97] New upstream version 0.8.3
+
+ -- Chow Loong Jin <hyperair@debian.org>  Fri, 30 Jan 2026 17:16:46 +0800
+
+hyprpaper (0.8.2-1) UNRELEASED; urgency=medium
+
+  * New upstream version 0.8.2
+
+ -- Chow Loong Jin <hyperair@debian.org>  Wed, 28 Jan 2026 16:48:34 +0800
+
+hyprpaper (0.8.1-1) UNRELEASED; urgency=medium
+
+  * New upstream version 0.8.1
+  * Build-dep on hyprwire-scanner
+
+ -- Chow Loong Jin <hyperair@debian.org>  Mon, 05 Jan 2026 11:33:58 +0800
+
+hyprpaper (0.8.0-1) UNRELEASED; urgency=medium
+
+  * New upstream version 0.8.0
+  * d/control: Update build-deps
+    - Drop cairo, pango and hyprgraphics
+    - Add hyprtoolkit pixman, and drm
+  * d/copyright: Add myself
+
+ -- Chow Loong Jin <hyperair@debian.org>  Fri, 02 Jan 2026 13:07:33 +0800
+
+hyprpaper (0.7.6-1) unstable; urgency=medium
+
+  * Salvage package (Closes: #1122647)
+  * Update build-deps
+    - Change libcairo-dev to libcairo2-dev (Closes: #1102375)
+    - Drop libwlroots-0.18-dev which is no longer used (Closes: #1122203)
+    - Add libgles-dev, libopengl-dev and wayland-protocols (previously
+      transitive dependencies of wlroots)
+    - Update versions on hyprutils and hyprlang
+  * Update maintainer to Debian Hyprland team
+  * Reindent Build-Depends to match team convention
+  * Update Vcs-* fields to point to hyprland-team
+
+ -- Chow Loong Jin <hyperair@debian.org>  Fri, 12 Dec 2025 22:29:57 +0800
+
+hyprpaper (0.7.6-0.1) unstable; urgency=medium
+
+  * Non-maintainer upload
+  * New upstream release 0.7.6 (Closes: #1106522)
+    - Also fixes FTBFS with cmake 4 (Closes: #1112999)
+  * Switch libjpeg64-turbo-dev build-dep to libjpeg-dev (Closes: #1090808)
+
+ -- Chow Loong Jin <hyperair@debian.org>  Mon, 13 Oct 2025 11:17:06 +0800
+
+hyprpaper (0.7.4-1) UNRELEASED; urgency=medium
+
+  * New upstream version 0.7.4
+
+ -- Alan M Varghese (NyxTrail) <alan@digistorm.in>  Sun, 02 Mar 2025 10:32:11 +0000
+
+hyprpaper (0.7.1-1) UNRELEASED; urgency=medium
+
+  * New upstream version 0.7.1
+
+ -- Alan M Varghese (NyxTrail) <alan@digistorm.in>  Sun, 22 Sep 2024 09:37:04 +0000
+
+hyprpaper (0.7.0-1.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Upgrade to wlroots-0.18. Closes: #1092436
+
+ -- Bastian Germann <bage@debian.org>  Thu, 17 Apr 2025 16:35:16 +0200
+
+hyprpaper (0.7.0-1) unstable; urgency=low
+
+  * Initial release. Closes: #1065699
+  * Included a simple man page for hyprpaper (uses pandoc for building).
+
+ -- Alan M Varghese (NyxTrail) <alan@digistorm.in>  Fri, 08 Mar 2024 19:01:08 +0000
