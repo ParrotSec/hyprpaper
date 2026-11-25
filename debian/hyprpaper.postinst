@@ -1,0 +1,16 @@
+#!/bin/sh
+set -e
+
+# Older Parrot packages enabled hyprpaper.service from the package postinst.
+# Hyprland now starts Hyprpaper itself, so remove that legacy enablement.
+if [ "${1:-}" = "configure" ] && [ -n "${2:-}" ] && [ -z "${DPKG_ROOT:-}" ]; then
+    if dpkg --compare-versions "$2" lt 0.8.5-1parrot3; then
+        if command -v deb-systemd-helper >/dev/null 2>&1; then
+            deb-systemd-helper --user disable hyprpaper.service >/dev/null || true
+        fi
+    fi
+fi
+
+#DEBHELPER#
+
+exit 0

@@ -1,3 +1,10 @@
+hyprpaper (0.8.5-1parrot3) echo; urgency=medium
+
+  * Do not enable the Hyprpaper user service automatically; Hyprland now
+    starts Hyprpaper directly from the Parrot desktop configuration.
+
+ -- Lorenzo "Palinuro" Faletra <palinuro@parrotsec.org>  Thu, 26 Nov 2026 00:15:14 +0100
+
 hyprpaper (0.8.5-1parrot2) echo; urgency=medium
 
   * Fix compilation with gcc 14 by replacing the C++23
